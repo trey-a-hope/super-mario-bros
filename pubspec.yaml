@@ -12,10 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  bonfire: ^3.0.0
-  flame: ^1.8.1
-  flame_audio: ^2.0.4
-  flame_tiled: ^1.12.0
+  bonfire: 3.6.2
+  flame: 1.16.0 # 1.17.0 deffective
+  flame_audio: 2.10.0 # 2.10.1 deffective
+  flame_tiled: 1.19.0 # 1.20.0 deffective
 
 dev_dependencies:
   flutter_test:
@@ -29,4 +29,3 @@ flutter:
   assets:
     - assets/audio/
     - assets/images/
-    - assets/tiles/

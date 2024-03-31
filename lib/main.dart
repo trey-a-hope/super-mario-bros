@@ -1,4 +1,3 @@
-import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:super_mario_bros/constants/globals.dart';

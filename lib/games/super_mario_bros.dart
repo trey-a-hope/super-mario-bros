@@ -2,7 +2,6 @@ import 'package:bonfire/bonfire.dart';
 import 'package:flutter/material.dart';
 import 'package:super_mario_bros/actors/mario.dart';
 import 'package:super_mario_bros/constants/globals.dart';
-import 'package:flutter/services.dart';
 
 class SuperMarioBrosGame extends StatefulWidget {
   const SuperMarioBrosGame({Key? key}) : super(key: key);
@@ -14,14 +13,30 @@ class SuperMarioBrosGame extends StatefulWidget {
 class _SuperMarioBrosGameState extends State<SuperMarioBrosGame> {
   @override
   Widget build(BuildContext context) => BonfireWidget(
+        map: WorldMapByTiled(
+          TiledReader.asset(Globals.lv_1_1),
+          forceTileSize: Vector2(
+            32,
+            32,
+          ),
+          objectsBuilder: {
+            // 'Island 1': (properties) => Platform(
+            //       size: Vector2.all(32),
+            //       position: properties.position,
+            //     ),
+          },
+        ),
+        globalForces: [
+          GravityForce2D(),
+        ],
         joystick: Joystick(
           directional: JoystickDirectional(),
-          keyboardConfig: KeyboardConfig(
-            acceptedKeys: [
-              LogicalKeyboardKey.numpadEnter,
-              LogicalKeyboardKey.numpad0,
-            ],
-          ),
+          // keyboardConfig: KeyboardConfig(
+          //   acceptedKeys: [
+          //     LogicalKeyboardKey.numpadEnter,
+          //     LogicalKeyboardKey.numpad0,
+          //   ],
+          // ),
           actions: [
             // JoystickAction(
             //   actionId: AttackType.melee,
@@ -40,14 +55,6 @@ class _SuperMarioBrosGameState extends State<SuperMarioBrosGame> {
         ),
         player: Mario(
           Vector2(100, 100),
-        ),
-        map: WorldMapByTiled(
-          Globals.lv_1_1,
-          forceTileSize: Vector2(
-            32,
-            32,
-          ),
-          objectsBuilder: {},
         ),
       );
 }

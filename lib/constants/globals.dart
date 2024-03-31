@@ -18,7 +18,7 @@ class Globals {
   static const double tileSize = 16;
 
   /// Levels
-  // static const lv_1_1 = 'world_1_1_map.tmx';
+  // NOTE: Only takes .json, cannot take .tmx.
   static const lv_1_1 = 'world_1_1_map.json';
 
   /// Sprite Sheets
