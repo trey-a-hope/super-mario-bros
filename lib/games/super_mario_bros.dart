@@ -11,8 +11,44 @@ class SuperMarioBrosGame extends StatefulWidget {
 }
 
 class _SuperMarioBrosGameState extends State<SuperMarioBrosGame> {
+  /// Key for current state of the game.
+  var _gameKey = UniqueKey();
+
+  @override
+  void initState() {
+    // createPlatforms();
+    super.initState();
+  }
+
+  // TODO: Follow Platform game to see how the Fox is standing on platforms.
+  void createPlatforms() async {
+    // final TiledComponent level = await TiledComponent.load(
+    //   prefix: 'assets/images/',
+    //   Globals.lv_1_1,
+    //   Vector2.all(Globals.tileSize),
+    // );
+
+    // ObjectGroup? platformsLayer =
+    //     level.tileMap.getLayer<ObjectGroup>('Platform Layer');
+
+    // if (platformsLayer == null) {
+    //   throw Exception('Platforms layer not found.');
+    // }
+
+    debugPrint('layer found');
+
+    // for (final TiledObject obj in platformsLayer.objects) {
+    //   final Platform platform = Platform(
+    //     position: Vector2(obj.x, obj.y),
+    //     size: Vector2(obj.width, obj.height),
+    //   );
+    //   gameRef.world.add(platform);
+    // }
+  }
+
   @override
   Widget build(BuildContext context) => BonfireWidget(
+        key: _gameKey,
         map: WorldMapByTiled(
           TiledReader.asset(Globals.lv_1_1),
           forceTileSize: Vector2(
@@ -20,10 +56,10 @@ class _SuperMarioBrosGameState extends State<SuperMarioBrosGame> {
             32,
           ),
           objectsBuilder: {
-            // 'Island 1': (properties) => Platform(
-            //       size: Vector2.all(32),
-            //       position: properties.position,
-            //     ),
+            'Platform Layer': (properties) => Mario(
+                  // size: Vector2.all(32),
+                  properties.position,
+                ),
           },
         ),
         globalForces: [
@@ -31,30 +67,16 @@ class _SuperMarioBrosGameState extends State<SuperMarioBrosGame> {
         ],
         joystick: Joystick(
           directional: JoystickDirectional(),
-          // keyboardConfig: KeyboardConfig(
-          //   acceptedKeys: [
-          //     LogicalKeyboardKey.numpadEnter,
-          //     LogicalKeyboardKey.numpad0,
-          //   ],
-          // ),
-          actions: [
-            // JoystickAction(
-            //   actionId: AttackType.melee,
-            //   size: 80,
-            //   margin: const EdgeInsets.only(bottom: 50, right: 50),
-            //   align: JoystickActionAlign.BOTTOM_RIGHT,
-            //   sprite: Sprite.load(Globals.sword),
-            // ),
-            // JoystickAction(
-            //   actionId: AttackType.range,
-            //   size: 50,
-            //   margin: const EdgeInsets.only(bottom: 50, right: 160),
-            //   sprite: Sprite.load(Globals.shurikenSingle),
-            // )
-          ],
+          actions: [],
         ),
         player: Mario(
           Vector2(100, 100),
         ),
       );
+
+  void reset() {
+    setState(() {
+      _gameKey = UniqueKey();
+    });
+  }
 }

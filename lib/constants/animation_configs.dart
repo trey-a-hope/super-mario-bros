@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:bonfire/bonfire.dart';
-import 'package:flame/components.dart';
-import 'package:flame/sprite.dart';
 import 'package:super_mario_bros/constants/globals.dart';
 import 'package:super_mario_bros/constants/sprite_sheets.dart';
 

@@ -1,5 +1,4 @@
-import 'package:flame/collisions.dart';
-import 'package:flame/components.dart';
+import 'package:bonfire/bonfire.dart';
 
 class Platform extends PositionComponent {
   Platform({

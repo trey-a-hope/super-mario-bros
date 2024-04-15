@@ -1,4 +1,4 @@
-import 'package:flame/components.dart';
+import 'package:bonfire/bonfire.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:super_mario_bros/constants/animation_configs.dart';
 import 'package:super_mario_bros/constants/globals.dart';
